@@ -1,0 +1,30 @@
+.footer-content-left img{
+    height: 40vh;
+    width: 20vw;
+}
+
+.footer-content{
+
+    display: flex;
+    margin: 0 20vw;
+    gap: 15vw;
+}
+
+.footer-content li {
+    list-style: none;
+    color: #7F5539;
+    width: max-content;
+    margin-top: 10px;
+}
+
+.footer-content-right{
+    padding-top: 45px;
+}
+
+.footer-content-center{
+    padding-top: 45px;
+}
+
+
+                        
+                

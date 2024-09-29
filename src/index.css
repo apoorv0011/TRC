@@ -1,0 +1,30 @@
+ *{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+ }
+
+ body{
+  min-height: 100vh;
+ }
+
+a{
+  text-decoration: none;
+  color: inherit;  
+}
+
+.app{
+  margin: auto;
+  width: 100%;
+}
+
+.code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 0;
+  background-color: #7F5539;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: 700;
+}

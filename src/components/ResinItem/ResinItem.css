@@ -1,0 +1,77 @@
+/* .resin-item-image-container{
+    height: 35vh;
+    width: 15vw;
+    border-radius: 20px;
+} */
+
+.resin-item-image{
+    height: 35vh;
+    width: 15vw;
+    border-radius: 20px;
+
+}
+
+.resin-item-desc{
+    color: #676767;
+    font-size: 12px;
+}
+
+.resin-item-price{
+    color: #7F5539;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 10px 0px;
+}
+
+.resin-item-image-container{
+    position: relative;
+}
+
+.resin-item-image-container .add{
+    width: 35px;
+    position: absolute;
+    bottom: 15px;
+    right:15px ;
+    cursor: pointer;
+    border-radius: 50%;
+
+
+}
+
+.resin-item-coumter{
+    /* width: 35px; */
+    position: absolute;
+    bottom: 15px;
+    right:15px ;
+    cursor: pointer;
+    border-radius:50px ;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    background-color: white;
+
+
+
+}
+
+.resin-item-name-rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.resin-item-name-rating p{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.resin-item-name-rating img{
+    width: 70px;
+}
+
+
+
+
+
+
