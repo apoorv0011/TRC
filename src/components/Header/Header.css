@@ -3,6 +3,7 @@
 .header-contents{
     display: flex;
     position: relative;
+   
 }
 
 .header-contents img {
@@ -14,14 +15,39 @@
 
 
 .header-contents button {
+    width: 100%;
     background-color: #7F5539;
     color: white;
     height: 40px;
     width: 200px;
     position: absolute;
     bottom: 100px;
-    right: 43vw;
+    right: 42vw;
     font-size: 20px;
     font-weight: 600;
     font-family: 'Times New Roman', Times, serif;
+}
+
+@media (max-width:1050) {
+    
+    .header-contents{
+        max-width: 45%;
+    }
+}
+@media (max-width:750px) {
+    
+    .header-contents{
+        max-width: 65%;
+    }
+
+    .header-contents img{
+        max-height: 50vh;
+    }
+    .header-contents:p{
+        display: none;
+    }
+    .header-contents button{
+        align-self: center;
+        right: -30px;
+    }
 }

@@ -40,7 +40,8 @@
  
 //  export default ResinItem
  
-import React, { useContext,StoreContext } from 'react';
+import React, { useContext } from 'react';
+import { StoreContext } from '../../context/ShowContext';
 import "./ResinItem.css";
 import { assets } from '../../assets/assets';
 
@@ -65,7 +66,7 @@ const ResinItem = ({ id, name, price, description, image }) => {
       <div className="resin-item-info">
         <div className="resin-item-name-rating">
           <p>{name}</p>
-          <img src={assets.rating_stars} alt="" />
+          <img src={assets.rating_starts} alt="" />
         </div>
         <p className="resin-item-desc">{description}</p>
         <p className="resin-item-price">₹{price}</p>

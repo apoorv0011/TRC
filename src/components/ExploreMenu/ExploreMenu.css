@@ -30,3 +30,10 @@
 .explore-menu-list-item .active{
     border: 4px solid #7F5539;
 }
+
+@media(max-width:1050px){
+    .explore-menu-list{
+        
+    }
+
+}

@@ -25,7 +25,7 @@ import white_icon from './add_icon_white.png'
 import green_icon from './add_icon_green.png'
 import red_icon from './remove_icon_red.png'
 import rating_starts from './rating_starts.png'
-
+import cross_icon from './cross_icon.png'
 
 export const assets={
     bookmark,
@@ -54,7 +54,8 @@ export const assets={
     white_icon,
     green_icon,
     red_icon,
-    rating_starts
+    rating_starts,
+    cross_icon
 }
 //array list
 export const menu_list=[{

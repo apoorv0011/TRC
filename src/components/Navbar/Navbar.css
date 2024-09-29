@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    margin: 0 5vw;
 }
 .upperNav{
     display: flex;
@@ -67,6 +68,7 @@
 
 .profile img {
     height: 30px;
+    cursor: pointer;
     padding: 0 7px;
 }
 
@@ -85,4 +87,63 @@
     border-bottom: 2px solid #49557e ;
   }
 
+.Signin-button{
+    border: 1px solid gray;
+    padding: 8px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.profile{
+    display: flex;
+    gap:10px;
+}
+
+@media (max-width:1050px) {
+    .upperNav .lowerNav .logo{
+        width: 140px;
+    }
+    .upperNav .lowerNav{
+        gap:20px;
+        font-size: 17px;
+    }
+    .upperNav{
+        gap:30px;
+    }
+    .upperNav img{
+        width:22px;
+    }
+    .Signin-button button{
+        padding: 8px 25px;
+    }
+}
+@media (max-width:900px) {
+    .upperNav .lowerNav .logo{
+        width: 140px;
+    }
+.upperNav {
+        gap:15px;
+        font-size: 16px;
+    }
+    .lowerNav ul{
+        gap: 1vw;
+    }
+    .upperNav{
+        gap:20px;
+    }
+    .upperNav img{
+        width:10vw;
+    }
+    .Signin-button button{
+        padding: 7px 20px;
+        font-size: 15px;
+    }
+}
+@media (max-width:750px) {
+   
+    .lowerNav .upperNav{
+       display: none;
+    }
+    
+}
 
