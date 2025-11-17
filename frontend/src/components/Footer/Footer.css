@@ -1,0 +1,87 @@
+.footer {
+  width: 100%;
+  padding: 60px 12%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: 'Georgia';
+  color: #6b4423;
+}
+
+.footer-left {
+  max-width: 270px;
+}
+
+.footer-logo {
+  width: 160px;
+  margin-bottom: 10px;
+}
+
+.footer-tagline {
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.footer-website {
+  display: block;
+  font-size: 14px;
+  color: #6b4423;
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.footer-icons i {
+  font-size: 20px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.footer-right {
+  display: flex;
+  gap: 80px;
+}
+
+.footer-column p {
+  font-size: 15px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.footer-column p:hover {
+  text-decoration: underline;
+}
+
+
+/* ---------------- MOBILE RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px 8%;
+  }
+
+  .footer-left {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .footer-logo {
+    width: 140px;
+  }
+
+  .footer-right {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .footer-column p {
+    font-size: 14px;
+  }
+
+  .footer-icons i {
+    font-size: 22px;
+  }
+}

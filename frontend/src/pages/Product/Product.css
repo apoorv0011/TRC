@@ -1,0 +1,30 @@
+.product-page {
+  display: flex;
+  padding: 40px;
+  gap: 40px;
+}
+
+.product-left img {
+  width: 350px;
+  border-radius: 10px;
+}
+
+.product-right {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-price {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.add-to-cart-btn {
+  padding: 12px 20px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
