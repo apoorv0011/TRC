@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import ExploreMenu from "../../components/ExploreMenu/ExploreMenu";
 import ProductDisplay from "../../components/ProductDisplay/ProductDisplay";
 import BestSellers from "../../components/BestSellers/BestSellers";
+import CustomDesign from "../../components/CustomDesign/CustomDesign";
 
 const Home = ({ section }) => {
   const categoriesRef = useRef(null);
@@ -35,6 +36,9 @@ const Home = ({ section }) => {
       <div ref={bestRef}>
         <BestSellers />
       </div>
+
+      {/* Custom Design Section */}
+      <CustomDesign />
 
       
     </div>

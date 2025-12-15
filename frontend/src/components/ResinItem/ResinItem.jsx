@@ -1,74 +1,74 @@
-//  import React, { useContext } from 'react'
-//  import "./ResinItem.css"
-//  import { assets } from '../../assets/assets'
- 
-//  const ResinItem = ({id,name,price,description,image}) => {
-
-//   // const [itemCount,seItemCount]=useState(0)
-//   const {cartItems,addToCart,removeFromCart}=useContext(StoreContext);
-
-//    return (
-//      <div className="resin-item">
-//       <div className="resin-item-image-container">
-//         <img className='resin-item-image'  src={image} alt="" />
-//         {
-//           !cartItems[id]?
-//           <img className='add' onClick={()=>addToCart(id)} src={assets.white_icon} alt="" />
-//           :<div className='resin-item-coumter'>
-//             <img onClick={()=>removeFromCart(id)} src={assets.red_icon}  alt="" />
-//             <p>{itemCount}</p>
-//             <img onClick={()=>addToCart(id)} src={assets.green_icon} alt="" />
-//           </div>
-          
-//         }
-//       </div>
-//       <div className="resin-item-info">
-//         <div className="resin-item-name-rating">
-//           <p>{name}</p>
-//           <img src={assets.rating_starts} alt="" />
-//         </div>
-//         <p className="resin-item-desc">{description}</p>
-//         <p className="resin-item-price">₹{price}</p>
-
-
-//       </div>
-
-       
-//      </div>
-//    )
-//  }
- 
-//  export default ResinItem
- 
 import React, { useContext } from 'react';
 import { StoreContext } from '../../context/ShowContext';
 import "./ResinItem.css";
 import { assets } from '../../assets/assets';
+import ProductRating from '../ProductRating/ProductRating';
 
-const ResinItem = ({ id, name, price, description, image }) => {
+const ResinItem = ({ id, name, price, description, image, onAddToCart }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
-  const itemCount = cartItems[id] || 0; // Ensure itemCount has a fallback of 0 if not in the cart
+  const itemCount = cartItems[id] || 0;
+
+  const handleAddClick = (e) => {
+    e.stopPropagation(); // Prevent parent click
+    if (onAddToCart) {
+      onAddToCart(e);
+    } else {
+      addToCart(id);
+    }
+  };
+
+  const handleRemoveClick = (e) => {
+    e.stopPropagation(); // Prevent parent click
+    removeFromCart(id);
+  };
+
+  const handleIncreaseClick = (e) => {
+    e.stopPropagation(); // Prevent parent click
+    addToCart(id);
+  };
 
   return (
     <div className="resin-item">
       <div className="resin-item-image-container">
-        <img className='resin-item-image' src={image} alt="" />
+        <img className='resin-item-image' src={image} alt={name} />
         {
           itemCount === 0 ?
-            <img className='add' onClick={() => addToCart(id)} src={assets.white_icon} alt="" />
+            <div 
+              className='add' 
+              onClick={handleAddClick}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5V19M5 12H19" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
             : <div className='resin-item-counter'>
-                <img onClick={() => removeFromCart(id)} src={assets.red_icon} alt="" />
+                <div 
+                  className="counter-btn remove-btn"
+                  onClick={handleRemoveClick}
+                >
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 10H16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                  </svg>
+                </div>
                 <p>{itemCount}</p>
-                <img onClick={() => addToCart(id)} src={assets.green_icon} alt="" />
+                <div 
+                  className="counter-btn add-btn"
+                  onClick={handleIncreaseClick}
+                >
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 4V16M4 10H16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+                  </svg>
+                </div>
               </div>
         }
       </div>
       <div className="resin-item-info">
-        <div className="resin-item-name-rating">
-          <p>{name}</p>
-          <img src={assets.rating_starts} alt="" />
+        <div className="resin-item-header">
+          <div className="resin-item-name">
+            <p>{name}</p>
+          </div>
+          <ProductRating productId={id} compact={true} />
         </div>
-        <p className="resin-item-desc">{description}</p>
         <p className="resin-item-price">₹{price}</p>
       </div>
     </div>

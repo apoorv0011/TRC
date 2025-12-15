@@ -1,149 +1,260 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    margin: 0 5vw;
+/* ============================================
+   SLEEK PREMIUM NAVBAR - COMPACT & MODERN
+   ============================================ */
+
+.navbar {
+    position: sticky;
+    top: 36px;
+    width: 100%;
+    z-index: 999;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201, 169, 97, 0.15);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
-.upperNav{
+
+.navbar-scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(201, 169, 97, 0.25);
+}
+
+.upperNav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
-    /* gap: 100px; */
+    padding: 0.75rem 5vw;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 2rem;
+    height: 65px;
 }
 
-.lowerNav ul{
+/* ===== LOGO - CLEAN & SIMPLE ===== */
+.logo1 {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
-    list-style: none;
-    cursor: pointer;
-    color: black;
-    font-size: 20px;
-    font-weight: 500;
+    transition: transform 0.3s ease;
 }
 
-.searchBar {
-    display: flex;
-    width: 40vw;
-    height: 14px;
-    border-radius: 30px;
-    padding: 7px 15px;
-    overflow: hidden;
-    background-color: #E3DCD6;
-
+.logo1:hover {
+    transform: scale(1.03);
 }
 
+.logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+    transition: filter 0.3s ease;
+}
+
+.logo1:hover .logo {
+    filter: drop-shadow(0 4px 10px rgba(201, 169, 97, 0.3));
+}
+
+/* ===== SEARCH BAR - SLEEK DESIGN ===== */
 .searchBar {
     display: flex;
-    width: 40vw;
-    height: 30px;
-    border-radius: 30px;
-    padding: 7px 15px;
-    overflow: hidden;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    height: 42px;
+    border-radius: 21px;
+    padding: 0 1.25rem;
+    background: #f8f6f2;
+    border: 1.5px solid transparent;
+    transition: all 0.3s ease;
+}
 
+.searchBar:focus-within {
+    background: white;
+    border-color: rgba(201, 169, 97, 0.4);
+    box-shadow: 0 4px 16px rgba(201, 169, 97, 0.12);
 }
 
 .searchBar input {
     flex: 1;
     outline: none;
     border: none;
-    width: 40vw;
-    font-size: 15px;
-    background-color: transparent;
+    background: transparent;
+    font-size: 0.9rem;
+    color: #3d2817;
+}
+
+.searchBar input::placeholder {
+    color: rgba(61, 40, 23, 0.45);
 }
 
 .searchBar button {
     background: none;
     border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBar button:hover {
+    background: rgba(201, 169, 97, 0.15);
 }
 
 .searchBar button img {
-    cursor: pointer;
-    height: 15px;
-    background: none;
-
+    height: 18px;
+    width: 18px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
 }
 
-.profile img {
-    height: 30px;
-    cursor: pointer;
-    padding: 0 7px;
+.searchBar button:hover img {
+    opacity: 1;
 }
 
-.lowerNav ul {
+/* ===== PROFILE SECTION - MINIMAL & ELEGANT ===== */
+.profile {
     display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-link {
+    transition: transform 0.2s ease;
+}
+
+.cart-link:hover {
+    transform: translateY(-2px);
+}
+
+.cart-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: #f8f6f2;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.cart-icon-wrapper:hover {
+    background: linear-gradient(135deg, #c9a961 0%, #a08751 100%);
+    box-shadow: 0 4px 12px rgba(201, 169, 97, 0.25);
+}
+
+.cart-icon-wrapper img {
+    height: 20px;
+    width: 20px;
+    transition: filter 0.3s ease;
+}
+
+.cart-icon-wrapper:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: linear-gradient(135deg, #c9a961 0%, #a08751 100%);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.4rem;
+    border-radius: 9999px;
+    min-width: 18px;
     text-align: center;
-    gap: 8vw;
-    /* margin-left: 6vw;
-    margin-top: -30px;
-    margin-bottom: 20px; */
-
+    box-shadow: 0 2px 6px rgba(201, 169, 97, 0.4);
 }
 
-.lowerNav .active{
-    padding-bottom: 2px;
-    border-bottom: 2px solid #49557e ;
-  }
-
-.Signin-button{
-    border: 1px solid gray;
-    padding: 8px 10px;
-    border-radius: 50px;
+/* ===== SIGN IN BUTTON - COMPACT & PREMIUM ===== */
+.Signin-button {
+    padding: 0.7rem 1.75rem;
+    background: linear-gradient(135deg, #c9a961 0%, #a08751 100%);
+    color: white;
+    border: none;
+    border-radius: 21px;
+    font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(201, 169, 97, 0.25);
 }
 
-.profile{
-    display: flex;
-    gap:10px;
+.Signin-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(201, 169, 97, 0.35);
+    background: linear-gradient(135deg, #e8d5b7 0%, #c9a961 100%);
 }
 
-@media (max-width:1050px) {
-    .upperNav .lowerNav .logo{
-        width: 140px;
-    }
-    .upperNav .lowerNav{
-        gap:20px;
-        font-size: 17px;
-    }
-    .upperNav{
-        gap:30px;
-    }
-    .upperNav img{
-        width:22px;
-    }
-    .Signin-button button{
-        padding: 8px 25px;
-    }
-}
-@media (max-width:900px) {
-    .upperNav .lowerNav .logo{
-        width: 140px;
-    }
-.upperNav {
-        gap:15px;
-        font-size: 16px;
-    }
-    .lowerNav ul{
-        gap: 1vw;
-    }
-    .upperNav{
-        gap:20px;
-    }
-    .upperNav img{
-        width:10vw;
-    }
-    .Signin-button button{
-        padding: 7px 20px;
-        font-size: 15px;
-    }
-}
-@media (max-width:750px) {
-   
-    .lowerNav .upperNav{
-       display: none;
-    }
-    
+.Signin-button:active {
+    transform: translateY(0);
 }
 
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+    .upperNav {
+        gap: 1.5rem;
+    }
+
+    .searchBar {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .upperNav {
+        flex-wrap: wrap;
+        padding: 0.75rem 4vw;
+        height: auto;
+        gap: 1rem;
+    }
+
+    .logo {
+        height: 42px;
+    }
+
+    .searchBar {
+        order: 3;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .profile {
+        gap: 0.75rem;
+    }
+
+    .Signin-button {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .upperNav {
+        padding: 0.625rem 3vw;
+    }
+
+    .logo {
+        height: 38px;
+    }
+
+    .cart-icon-wrapper {
+        width: 38px;
+        height: 38px;
+    }
+
+    .cart-icon-wrapper img {
+        height: 18px;
+        width: 18px;
+    }
+
+    .Signin-button {
+        padding: 0.55rem 1.25rem;
+        font-size: 0.8rem;
+    }
+}

@@ -10,13 +10,13 @@ import {
 
 const router = express.Router();
 
-/* -------------------- PUBLIC ROUTES -------------------- */
-router.get("/", getProducts);         // Get all products
-router.get("/:id", getProductById);   // Get product by ID
+// Public routes - anyone can access
+router.get("/", getProducts);
+router.get("/:id", getProductById);
 
-/* -------------------- ADMIN ONLY ROUTES -------------------- */
-router.post("/add", auth, adminOnly, createProduct);           // Add product
-router.put("/update/:id", auth, adminOnly, updateProduct);     // Update product
-router.delete("/delete/:id", auth, adminOnly, deleteProduct);  // Delete product
+// Admin-only routes - require authentication and admin role
+router.post("/add", auth, adminOnly, createProduct);
+router.put("/update/:id", auth, adminOnly, updateProduct);
+router.delete("/delete/:id", auth, adminOnly, deleteProduct);
 
 export default router;

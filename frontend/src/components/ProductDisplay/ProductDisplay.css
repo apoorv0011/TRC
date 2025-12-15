@@ -1,55 +1,56 @@
-/* .product_display{
-    margin-top: 30px;
-    
-
+/* Product Display Section - Beige/Brown Palette */
+.product_display {
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, #faf8f3 0%, #ffffff 50%, #faf8f3 100%);
+    position: relative;
 }
 
-.product_display h1{
-    font-size: max(2vw.24px);
-    font-weight: 600;
-}
-
-.product-display-list{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
-    margin-top: 30px;
-    gap: 30px;
-    row-gap: 50px;
-    height: 40px;
-    width: 20px;
-
-} */
-
-/* .product-display-list{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
-    margin: 0 255px;
-    padding-top: 20px;
-} */
-
-.product-display-list{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 0 255px;
-    gap: 10px;
-    padding-top: 20px;
-    /* width: 80%; */
-    
-
-}
-
-.product_display h1{
+.product_display h1 {
     text-align: center;
-    color: #7F5539;
-    font-size: 20px;
-    margin-top: 20px;
-    font-weight: 600;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: #3d2817;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.product-subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    color: #5c4033;
+    margin-bottom: 3rem;
 }
 
 .product-display-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
-  margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.product-link:hover {
+    transform: translateY(-8px);
+}
+
+.no-products {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 1.25rem;
+    color: #8b7355;
+    padding: 4rem 0;
+}
+
+@media (max-width: 768px) {
+    .product-display-list {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
 }

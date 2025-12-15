@@ -1,49 +1,82 @@
 import { createContext, useEffect, useState } from "react";
 import api from "../services/api";
+import { fallbackProducts } from "../data/fallbackProducts";
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [product_list, setProductList] = useState([]);
   const [cartItems, setCartItems] = useState({});
+  const [loading, setLoading] = useState(true);
 
+  // Fetch products from backend
   useEffect(() => {
-    api
-      .get("/products")   // ✔ FIXED — no /api/ here
-      .then((res) => {
-        if (Array.isArray(res.data)) {
-          console.log("Products fetched:", res.data.length);
-          setProductList(res.data.reverse());
+    const fetchProducts = async () => {
+      try {
+        const response = await api.get("/products");
+        
+        if (Array.isArray(response.data) && response.data.length > 0) {
+          console.log(`✅ Loaded ${response.data.length} products from database`);
+          setProductList(response.data.reverse());
         } else {
-          console.error("Invalid backend response:", res.data);
-          setProductList([]);
+          console.warn("⚠️ No products in database, using fallback products");
+          setProductList(fallbackProducts);
         }
-      })
-      .catch((err) => {
-        console.error("❌ Error fetching products:", err);
-        setProductList([]);
-      });
+      } catch (error) {
+        console.error("❌ Failed to fetch products:", error.message);
+        console.log("📦 Using fallback products");
+        setProductList(fallbackProducts);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
-  const addToCart = (id) =>
-    setCartItems((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
+  // Add item to cart
+  const addToCart = (id) => {
+    setCartItems((prev) => ({ 
+      ...prev, 
+      [id]: (prev[id] || 0) + 1 
+    }));
+  };
 
-  const removeFromCart = (id) =>
-    setCartItems((prev) => ({ ...prev, [id]: prev[id] - 1 }));
+  // Remove item from cart
+  const removeFromCart = (id) => {
+    setCartItems((prev) => ({ 
+      ...prev, 
+      [id]: Math.max((prev[id] || 0) - 1, 0)
+    }));
+  };
 
+  // Calculate total cart amount
   const getTotalCartAmount = () => {
     let total = 0;
-    for (let item in cartItems) {
-      const product = product_list.find((p) => p._id === item);
-      if (product) total += product.price * cartItems[item];
+    
+    for (let itemId in cartItems) {
+      if (cartItems[itemId] > 0) {
+        const product = product_list.find((p) => p._id === itemId);
+        if (product) {
+          total += product.price * cartItems[itemId];
+        }
+      }
     }
+    
     return total;
   };
 
+  const contextValue = {
+    product_list,
+    cartItems,
+    addToCart,
+    removeFromCart,
+    getTotalCartAmount,
+    loading
+  };
+
   return (
-    <StoreContext.Provider
-      value={{ product_list, cartItems, addToCart, removeFromCart, getTotalCartAmount }}
-    >
+    <StoreContext.Provider value={contextValue}>
       {props.children}
     </StoreContext.Provider>
   );

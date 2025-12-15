@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const LoginPopup = ({ setShowLogin }) => {
-  const [currState, setCurrentState] = useState("Login"); // "Login" or "Sign Up"
+  const [currState, setCurrentState] = useState("Login");
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const navigate = useNavigate();
 
@@ -20,9 +20,6 @@ const LoginPopup = ({ setShowLogin }) => {
     e.preventDefault();
 
     try {
-      // ------------------------------
-      // SIGN UP
-      // ------------------------------
       if (currState === "Sign Up") {
         const res = await axios.post("http://localhost:5000/api/auth/register", {
           name: form.name,
@@ -36,24 +33,19 @@ const LoginPopup = ({ setShowLogin }) => {
         return;
       }
 
-      // ------------------------------
-      // LOGIN
-      // ------------------------------
       const res = await axios.post("http://localhost:5000/api/auth/login", {
         email: form.email,
         password: form.password,
       });
 
-      const data = res.data; // { token, role, name, email }
+      const data = res.data;
 
-      // Store in localStorage
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role || "user");
       localStorage.setItem("name", data.name || "");
 
-      setShowLogin(false); // close popup
+      setShowLogin(false);
 
-      // Redirect based on role
       if (data.role === "admin") {
         navigate("/admin");
       } else {
@@ -67,83 +59,107 @@ const LoginPopup = ({ setShowLogin }) => {
 
   return (
     <div className="login-popup">
+      <div className="login-popup-overlay" onClick={() => setShowLogin(false)}></div>
+      
       <form className="login-popup-container" onSubmit={handleSubmit}>
-        {/* TITLE + CLOSE BUTTON */}
-        <div className="login-popup-title">
-          <h2>{currState}</h2>
-          <img
-            onClick={() => setShowLogin(false)}
-            src={assets.cross_icon}
-            alt="Close"
-            style={{ cursor: "pointer" }}
-          />
-        </div>
-
-        {/* FORM INPUTS */}
-        <div className="login-popup-inputs">
-          {currState === "Sign Up" && (
-            <input
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              type="text"
-              placeholder="Name"
-              required
-            />
-          )}
-
-          <input
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            type="email"
-            placeholder="Email"
-            required
-          />
-
-          <input
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </div>
-
-        {/* SUBMIT BUTTON */}
-        <button className="login-btn">
-          {currState === "Sign Up" ? "Create account" : "Login"}
+        {/* Close Button */}
+        <button 
+          type="button"
+          className="close-btn"
+          onClick={() => setShowLogin(false)}
+        >
+          ×
         </button>
 
-        {/* TERMS CHECKBOX */}
-        <div className="login-popup-condition">
-          <input type="checkbox" required />
-          <p>
-            By continuing, I agree to the terms of use & privacy policy.
+        {/* Header */}
+        <div className="login-header">
+          <h2>{currState === "Login" ? "Welcome Back" : "Create Account"}</h2>
+          <p className="login-subtitle">
+            {currState === "Login" 
+              ? "Sign in to your account to continue" 
+              : "Join us to discover unique handcrafted jewelry"}
           </p>
         </div>
 
-        {/* SWITCH LINKS */}
-        <p>
-          Create a new account?
-          <span
-            onClick={() => setCurrentState("Sign Up")}
-            style={{ cursor: "pointer", color: "#8c5a42", marginLeft: 5 }}
-          >
-            Click here
-          </span>
-        </p>
+        {/* Form Inputs */}
+        <div className="login-popup-inputs">
+          {currState === "Sign Up" && (
+            <div className="input-group">
+              <label>Full Name</label>
+              <input
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                type="text"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+          )}
 
-        <p>
-          Already have an account?
-          <span
-            onClick={() => setCurrentState("Login")}
-            style={{ cursor: "pointer", color: "#8c5a42", marginLeft: 5 }}
-          >
-            Login here
-          </span>
-        </p>
+          <div className="input-group">
+            <label>Email Address</label>
+            <input
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              type="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <label>Password</label>
+            <input
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              type="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <button type="submit" className="login-btn">
+          {currState === "Sign Up" ? "Create Account" : "Sign In"}
+        </button>
+
+        {/* Terms */}
+        {currState === "Sign Up" && (
+          <div className="login-popup-condition">
+            <input type="checkbox" required id="terms" />
+            <label htmlFor="terms">
+              I agree to the <span>Terms of Service</span> and <span>Privacy Policy</span>
+            </label>
+          </div>
+        )}
+
+        {/* Divider */}
+        <div className="login-divider">
+          <span>or</span>
+        </div>
+
+        {/* Switch State */}
+        <div className="login-switch">
+          {currState === "Login" ? (
+            <p>
+              Don't have an account?{" "}
+              <span onClick={() => setCurrentState("Sign Up")}>
+                Sign up
+              </span>
+            </p>
+          ) : (
+            <p>
+              Already have an account?{" "}
+              <span onClick={() => setCurrentState("Login")}>
+                Sign in
+              </span>
+            </p>
+          )}
+        </div>
       </form>
     </div>
   );

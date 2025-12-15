@@ -1,0 +1,214 @@
+/* ============================================
+   PREMIUM STAR RATING COMPONENT
+   ============================================ */
+
+.star-rating-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 24px;
+    border: 1px solid rgba(201, 169, 97, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin: 2rem 0;
+}
+
+.star-rating-loading {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+/* ===== RATING SUMMARY ===== */
+.rating-summary {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+    margin-bottom: 2rem;
+}
+
+.rating-average {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.average-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #e8d5b7 0%, #c9a961 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.average-stars {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.total-ratings {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ===== STARS ===== */
+.star {
+    font-size: 1.5rem;
+    color: rgba(201, 169, 97, 0.2);
+    transition: all 0.2s ease;
+}
+
+.star.filled {
+    color: #c9a961;
+    text-shadow: 0 0 8px rgba(201, 169, 97, 0.5);
+}
+
+.star.half-filled {
+    background: linear-gradient(90deg, #c9a961 50%, rgba(201, 169, 97, 0.2) 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.star.interactive {
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.star.interactive:hover {
+    transform: scale(1.2);
+    color: #e8d5b7;
+}
+
+/* ===== RATING DISTRIBUTION ===== */
+.rating-distribution {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.rating-bar-row {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rating-bar-label {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+.rating-bar-container {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.rating-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #c9a961 0%, #e8d5b7 100%);
+    border-radius: 4px;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px rgba(201, 169, 97, 0.5);
+}
+
+.rating-bar-count {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* ===== USER RATING SECTION ===== */
+.user-rating-section {
+    text-align: center;
+}
+
+.user-rating-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e8d5b7;
+    margin: 0 0 1.25rem 0;
+}
+
+.user-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.user-rating-text {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    margin: 0.75rem 0 0 0;
+    font-weight: 500;
+}
+
+.submitting-text {
+    color: #c9a961;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 0 0;
+    font-style: italic;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .rating-summary {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .rating-average {
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(201, 169, 97, 0.2);
+    }
+
+    .average-number {
+        font-size: 3rem;
+    }
+
+    .star.interactive {
+        font-size: 1.75rem;
+    }
+
+    .rating-bar-row {
+        grid-template-columns: 35px 1fr 35px;
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .star-rating-container {
+        padding: 1.5rem;
+    }
+
+    .average-number {
+        font-size: 2.5rem;
+    }
+
+    .star {
+        font-size: 1.25rem;
+    }
+
+    .star.interactive {
+        font-size: 1.5rem;
+    }
+
+    .user-rating-section h3 {
+        font-size: 1.25rem;
+    }
+}

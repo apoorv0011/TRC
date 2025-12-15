@@ -2,13 +2,23 @@ import React, { useContext } from "react";
 import "./ProductDisplay.css";
 import { StoreContext } from "../../context/ShowContext";
 import ResinItem from "../ResinItem/ResinItem";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProductDisplay = () => {
-  const { product_list } = useContext(StoreContext);
+  const { product_list, addToCart } = useContext(StoreContext);
+  const navigate = useNavigate();
 
   // Get latest 4 products
   const latestProducts = [...product_list].slice(-4).reverse();
+
+  const handleProductClick = (productId) => {
+    navigate(`/product/${productId}`);
+  };
+
+  const handleAddToCart = (e, productId) => {
+    e.stopPropagation(); // Prevent navigation when clicking add button
+    addToCart(productId);
+  };
 
   return (
     <div className="product_display" id="product_display">
@@ -16,18 +26,23 @@ const ProductDisplay = () => {
 
       <div className="product-display-list">
         {latestProducts.length === 0 ? (
-          <p>No products added yet</p>
+          <p className="no-products">No products added yet</p>
         ) : (
           latestProducts.map((item) => (
-            <Link to={`/product/${item._id}`} key={item._id} className="product-link">
+            <div 
+              key={item._id} 
+              className="product-link"
+              onClick={() => handleProductClick(item._id)}
+            >
               <ResinItem
                 id={item._id}
                 name={item.name}
                 description={item.description}
                 price={item.price}
                 image={item.image}
+                onAddToCart={(e) => handleAddToCart(e, item._id)}
               />
-            </Link>
+            </div>
           ))
         )}
       </div>
