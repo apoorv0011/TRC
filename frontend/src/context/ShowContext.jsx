@@ -14,7 +14,6 @@ const StoreContextProvider = (props) => {
     const fetchProducts = async () => {
       try {
         const response = await api.get("/products");
-        
         if (Array.isArray(response.data) && response.data.length > 0) {
           console.log(`✅ Loaded ${response.data.length} products from database`);
           setProductList(response.data.reverse());
