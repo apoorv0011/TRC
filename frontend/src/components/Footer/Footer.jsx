@@ -12,26 +12,28 @@ const Footer = () => {
           
           {/* Brand Section */}
           <div className="footer-brand">
-            <img src={assets.trc_bgremove} alt="TRC Logo" className="footer-logo" />
+            <div className="footer-brand-top">
+              <img src={assets.trc_bgremove} alt="TRC Logo" className="footer-logo" />
+              <div className="footer-social">
+                <a href="https://instagram.com/therezelco" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram">
+                  <i className="fa-brands fa-instagram"></i>
+                </a>
+                <a href="mailto:therezelco@gmail.com" className="social-icon" aria-label="Email">
+                  <i className="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://facebook.com/therezelco" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook">
+                  <i className="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://linkedin.com/in/therezelco" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn">
+                  <i className="fa-brands fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
             <p className="footer-tagline">WHERE YOUR IMAGINATION TAKES SHAPE</p>
             <p className="footer-description">
               Crafting exquisite artificial jewelry that brings your unique style to life. 
               Each piece is designed with passion and attention to detail.
             </p>
-            <div className="footer-social">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <i className="fa-brands fa-instagram"></i>
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <i className="fa-brands fa-facebook"></i>
-              </a>
-              <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <i className="fa-brands fa-whatsapp"></i>
-              </a>
-              <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" className="social-icon">
-                <i className="fa-brands fa-pinterest"></i>
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -74,23 +76,9 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="footer-bottom">
-          <div className="footer-bottom-content">
-            <p className="copyright">
-              © {new Date().getFullYear()} The Rezel Co. All rights reserved.
-            </p>
-            <div className="footer-payment">
-              <span>We Accept:</span>
-              <div className="payment-icons">
-                <i className="fa-brands fa-cc-visa"></i>
-                <i className="fa-brands fa-cc-mastercard"></i>
-                <i className="fa-brands fa-cc-paypal"></i>
-                <i className="fa-brands fa-google-pay"></i>
-              </div>
-            </div>
-            <a href="https://www.therezelco.in" className="footer-website" target="_blank" rel="noopener noreferrer">
-              www.therezelco.in
-            </a>
-          </div>
+          <p className="copyright">
+            © 2026 The Rezel Co. All rights reserved.
+          </p>
         </div>
 
       </div>

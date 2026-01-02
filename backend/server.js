@@ -13,8 +13,8 @@ import cartRoutes from "./routes/cartRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import ratingRoutes from "./routes/ratingRoutes.js";
 
-// Load environment variables
-dotenv.config();
+// Load environment variables from .env.local
+dotenv.config({ path: '.env.local' });
 
 // Initialize Express app
 const app = express();

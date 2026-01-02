@@ -46,13 +46,20 @@
     gap: 1rem;
 }
 
+.footer-brand-top {
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
+}
+
 .footer-logo {
-    height: 60px;
+    height: 80px;
     width: auto;
     object-fit: contain;
-    filter: brightness(0) invert(1);
-    margin-bottom: 0.5rem;
     transition: transform 0.3s ease;
+    flex-shrink: 0;
+    border-radius: 10px;
 }
 
 .footer-logo:hover {
@@ -70,7 +77,7 @@
 
 .footer-description {
     font-size: 0.9rem;
-    line-height: 1.6;
+    line-height: 1.4;
     color: rgba(255, 255, 255, 0.75);
     margin: 0;
 }
@@ -79,7 +86,7 @@
 .footer-social {
     display: flex;
     gap: 0.75rem;
-    margin-top: 0.5rem;
+    align-items: center;
 }
 
 .social-icon {
@@ -171,74 +178,13 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1.5rem 2rem;
     background: rgba(0, 0, 0, 0.2);
-}
-
-.footer-bottom-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.25rem;
+    text-align: center;
 }
 
 .copyright {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.875rem;
     margin: 0;
-}
-
-.footer-payment {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.footer-payment span {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-
-.payment-icons {
-    display: flex;
-    gap: 0.65rem;
-}
-
-.payment-icons i {
-    font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
-}
-
-.payment-icons i:hover {
-    color: #c9a961;
-    transform: translateY(-3px);
-}
-
-.footer-website {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.875rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    position: relative;
-}
-
-.footer-website::after {
-    content: '→';
-    margin-left: 0.5rem;
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: all 0.3s ease;
-}
-
-.footer-website:hover {
-    color: #c9a961;
-}
-
-.footer-website:hover::after {
-    opacity: 1;
-    transform: translateX(0);
 }
 
 /* ============================================
@@ -269,6 +215,12 @@
         align-items: center;
     }
 
+    .footer-brand-top {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
     .footer-social {
         justify-content: center;
     }
@@ -284,17 +236,6 @@
     .footer-bottom {
         padding: 1.25rem 1.5rem;
     }
-
-    .footer-bottom-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-
-    .footer-payment {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -303,7 +244,7 @@
     }
 
     .footer-logo {
-        height: 50px;
+        height: 70px;
     }
 
     .social-icon {
