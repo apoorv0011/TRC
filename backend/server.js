@@ -13,8 +13,14 @@ import cartRoutes from "./routes/cartRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import ratingRoutes from "./routes/ratingRoutes.js";
 
-// Load environment variables from .env.local
-dotenv.config({ path: '.env.local' });
+// Load environment variables
+// In production (Render), variables are set in dashboard
+// In development, load from .env.local
+if (process.env.NODE_ENV !== 'production') {
+    dotenv.config({ path: '.env.local' });
+} else {
+    dotenv.config(); // Load from environment (Render sets these)
+}
 
 // Initialize Express app
 const app = express();
