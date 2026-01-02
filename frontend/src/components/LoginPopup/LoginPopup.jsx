@@ -4,6 +4,8 @@ import { assets } from "../../assets/assets";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+
 const LoginPopup = ({ setShowLogin }) => {
   const [currState, setCurrentState] = useState("Login");
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -21,7 +23,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
     try {
       if (currState === "Sign Up") {
-        const res = await axios.post("http://localhost:5000/api/auth/register", {
+        const res = await axios.post(`${API_URL}/auth/register`, {
           name: form.name,
           email: form.email,
           password: form.password,
@@ -33,7 +35,7 @@ const LoginPopup = ({ setShowLogin }) => {
         return;
       }
 
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post(`${API_URL}/auth/login`, {
         email: form.email,
         password: form.password,
       });
