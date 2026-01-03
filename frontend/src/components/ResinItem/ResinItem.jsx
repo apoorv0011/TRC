@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../context/ShowContext';
 import "./ResinItem.css";
 import { assets } from '../../assets/assets';
@@ -6,6 +7,7 @@ import ProductRating from '../ProductRating/ProductRating';
 
 const ResinItem = ({ id, name, price, description, image, onAddToCart }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+  const navigate = useNavigate();
   const itemCount = cartItems[id] || 0;
 
   const handleAddClick = (e) => {
@@ -27,8 +29,12 @@ const ResinItem = ({ id, name, price, description, image, onAddToCart }) => {
     addToCart(id);
   };
 
+  const handleCardClick = () => {
+    navigate(`/product/${id}`);
+  };
+
   return (
-    <div className="resin-item">
+    <div className="resin-item" onClick={handleCardClick} style={{ cursor: 'pointer' }}>
       <div className="resin-item-image-container">
         <img className='resin-item-image' src={image} alt={name} />
         {

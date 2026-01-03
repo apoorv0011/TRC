@@ -7,7 +7,7 @@ import api from "../../services/api";
 
 const Shop = () => {
 
-  const { product_list, addToCart } = useContext(StoreContext);
+  const { product_list } = useContext(StoreContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -96,15 +96,6 @@ const Shop = () => {
     filtered = [...filtered]; // already sorted newest → oldest in context
   }
 
-  const handleProductClick = (productId) => {
-    navigate(`/product/${productId}`);
-  };
-
-  const handleAddToCart = (e, productId) => {
-    e.stopPropagation(); // Prevent navigation when clicking add button
-    addToCart(productId);
-  };
-
   const clearSearch = () => {
     navigate('/shop');
   };
@@ -167,20 +158,14 @@ const Shop = () => {
             </div>
           ) : (
             filtered.map((item) => (
-              <div 
-                key={item._id} 
-                className="product-link"
-                onClick={() => handleProductClick(item._id)}
-              >
-                <ResinItem 
-                  id={item._id}
-                  name={item.name}
-                  description={item.description}
-                  price={item.price}
-                  image={item.image}
-                  onAddToCart={(e) => handleAddToCart(e, item._id)}
-                />
-              </div>
+              <ResinItem 
+                key={item._id}
+                id={item._id}
+                name={item.name}
+                description={item.description}
+                price={item.price}
+                image={item.image}
+              />
             ))
           )}
         </div>
